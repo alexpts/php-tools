@@ -42,6 +42,16 @@ class Collection implements CollectionInterface
             return $this;
         }
 
+        return $this->removeItemWithoutPriority($name);
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    protected function removeItemWithoutPriority(string $name)
+    {
         foreach ($this->items as $itemPriority => $items) {
             if (isset($items[$name])) {
                 unset($this->items[$itemPriority][$name]);
