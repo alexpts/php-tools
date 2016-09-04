@@ -1,6 +1,6 @@
 # php-tools
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/590c6fdc-95ed-4ed6-b76d-169d99c5de58/big.png)](https://insight.sensiolabs.com/projects/590c6fdc-95ed-4ed6-b76d-169d99c5de58)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/0de2d098-61e0-4a0d-8afa-d512cbeadca3/big.png)](https://insight.sensiolabs.com/projects/0de2d098-61e0-4a0d-8afa-d512cbeadca3)
 
 [![Build Status](https://travis-ci.org/alexpts/php-tools.svg?branch=master)](https://travis-ci.org/alexpts/php-tools)
 [![Test Coverage](https://codeclimate.com/github/alexpts/php-tools/badges/coverage.svg)](https://codeclimate.com/github/alexpts/php-tools/coverage)
