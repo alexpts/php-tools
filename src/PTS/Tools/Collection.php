@@ -52,9 +52,9 @@ class Collection implements CollectionInterface
      */
     protected function removeItemWithoutPriority(string $name)
     {
-        foreach ($this->items as $itemPriority => $items) {
+        foreach ($this->items as $priority => $items) {
             if (isset($items[$name])) {
-                unset($this->items[$itemPriority][$name]);
+                unset($this->items[$priority][$name]);
             }
         }
 
