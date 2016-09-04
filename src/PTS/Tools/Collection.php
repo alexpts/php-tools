@@ -53,7 +53,7 @@ class Collection implements CollectionInterface
 
     public function has(string $name) : bool
     {
-        foreach ($this->items as $priority => $items) {
+        foreach ($this->items as $items) {
             if (isset($items[$name])) {
                 return true;
             }
@@ -82,7 +82,7 @@ class Collection implements CollectionInterface
 
         /** @var array $items */
         foreach ($sortedItems as $items) {
-            foreach ($items as $name => $item) {
+            foreach ($items as $item) {
                 $flatItems[] = $item;
             }
         }
