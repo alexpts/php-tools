@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types =1);
 namespace PTS\Tools;
 
 class Collection implements CollectionInterface
@@ -19,7 +19,7 @@ class Collection implements CollectionInterface
     public function addItem(string $name, $item, int $priority = 50)
     {
         if ($this->has($name)) {
-            throw new DuplicateKeyException('Item with name ' . $name . ' already defined');
+            throw new DuplicateKeyException('Item with name '.$name.' already defined');
         }
 
         $this->items[$priority][$name] = $item;
