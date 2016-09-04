@@ -13,4 +13,4 @@
 
 
 ### Collection
-Коллекция с приоритетомgit remote add origin git@github.com:alexpts/php-tools.git
+Коллекция с приоритетом
