@@ -78,7 +78,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->coll->addItem('jquery', 'jquery.js', 20);
         $this->coll->addItem('bootstrap', 'bootstrap.js', 60);
 
-        $items = $this->coll->getFlatSortedItems();
+        $items = $this->coll->getFlatItems(true);
         $expected = ['bootstrap.js', 'jquery.js'];
 
         self::assertEquals($expected, $items);
@@ -89,7 +89,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         $this->coll->addItem('jquery', 'jquery.js', 20);
         $this->coll->addItem('bootstrap', 'bootstrap.js', 60);
 
-        $items = $this->coll->getSortedItems();
+        $items = $this->coll->getItems(true);
         $expected = [
             60 => [
                 'bootstrap' => 'bootstrap.js'

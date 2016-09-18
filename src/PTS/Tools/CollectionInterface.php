@@ -23,6 +23,8 @@ interface CollectionInterface
 
     public function getItems() : array;
 
+    public function getFlatItems() : array;
+
     /**
      * @return $this
      */

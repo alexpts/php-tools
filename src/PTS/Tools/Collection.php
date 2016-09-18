@@ -72,26 +72,27 @@ class Collection implements CollectionInterface
         return false;
     }
 
-    public function getItems() : array
+    /**
+     * @param bool $sort
+     * @return array[]
+     */
+    public function getItems(bool $sort = true) : array
     {
-        return $this->items;
-    }
+        $items = $this->items;
 
-    public function getSortedItems() : array
-    {
-        $items = $this->getItems();
-        krsort($items, SORT_NUMERIC);
+        if ($sort) {
+            krsort($items, SORT_NUMERIC);
+        }
 
         return $items;
     }
 
-    public function getFlatSortedItems() : array
+    public function getFlatItems(bool $sort = true) : array
     {
-        $sortedItems = $this->getSortedItems();
         $flatItems = [];
 
         /** @var array $items */
-        foreach ($sortedItems as $items) {
+        foreach ($this->getItems($sort) as $items) {
             foreach ($items as $item) {
                 $flatItems[] = $item;
             }
