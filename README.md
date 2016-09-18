@@ -12,7 +12,7 @@
 ```$ composer require alexpts/php-tools```
 
 
-### Collection
+### [Collection](https://github.com/alexpts/php-tools/blob/master/docs/collection.md)
 Коллекция с приоритетом
 
 Позволяет хранить любые сущности в виде именной коллекции с приоритетом
