@@ -21,9 +21,9 @@ interface CollectionInterface
 
     public function has(string $name) : bool;
 
-    public function getItems() : array;
+    public function getItems(bool $sort = true) : array;
 
-    public function getFlatItems() : array;
+    public function getFlatItems(bool $sort = true) : array;
 
     /**
      * @return $this
