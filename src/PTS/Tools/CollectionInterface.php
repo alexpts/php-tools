@@ -14,7 +14,7 @@ interface CollectionInterface
 
     /**
      * @param string $name
-     * @param int $priority
+     * @param int|null $priority
      * @return $this
      */
     public function removeItem(string $name, int $priority = null);
