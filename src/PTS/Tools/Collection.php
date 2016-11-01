@@ -93,8 +93,8 @@ class Collection implements CollectionInterface
 
         /** @var array $items */
         foreach ($this->getItems($sort) as $items) {
-            foreach ($items as $item) {
-                $flatItems[] = $item;
+            foreach ($items as $name => $item) {
+                $flatItems[$name] = $item;
             }
         }
 
