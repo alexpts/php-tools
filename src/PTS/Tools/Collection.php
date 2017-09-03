@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace PTS\Tools;
 
 class Collection implements CollectionInterface
@@ -16,7 +17,7 @@ class Collection implements CollectionInterface
      *
      * @throws DuplicateKeyException
      */
-    public function addItem(string $name, $item, int $priority = 50)
+    public function addItem(string $name, $item, int $priority = 50): self
     {
         if ($this->has($name)) {
             throw new DuplicateKeyException('Item with name '.$name.' already defined');
@@ -32,7 +33,7 @@ class Collection implements CollectionInterface
      *
      * @return $this
      */
-    public function removeItem(string $name, int $priority = null)
+    public function removeItem(string $name, int $priority = null): self
     {
         if ($priority !== null) {
             if (isset($this->items[$priority][$name])) {
@@ -50,7 +51,7 @@ class Collection implements CollectionInterface
      *
      * @return $this
      */
-    protected function removeItemWithoutPriority(string $name)
+    protected function removeItemWithoutPriority(string $name): self
     {
         foreach ($this->items as $priority => $items) {
             if (isset($items[$name])) {
@@ -76,7 +77,7 @@ class Collection implements CollectionInterface
      * @param bool $sort
      * @return array[]
      */
-    public function getItems(bool $sort = true) : array
+    public function getItems(bool $sort = true): array
     {
         $items = $this->items;
 
@@ -87,7 +88,7 @@ class Collection implements CollectionInterface
         return $items;
     }
 
-    public function getFlatItems(bool $sort = true) : array
+    public function getFlatItems(bool $sort = true): array
     {
         $flatItems = [];
 
@@ -104,7 +105,7 @@ class Collection implements CollectionInterface
     /**
      * @return $this
      */
-    public function flush()
+    public function flush(): self
     {
         $this->items = [];
         return $this;
