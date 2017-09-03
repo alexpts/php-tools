@@ -1,7 +1,9 @@
 <?php
 namespace PTS\Tools;
 
-class CollectionTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class CollectionTest extends TestCase
 {
     /** @var Collection */
     protected $coll;
