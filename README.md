@@ -19,3 +19,6 @@
 
 ### [DeepArray](https://github.com/alexpts/php-tools/blob/master/docs/deepArray.md)
 Сервис для работы с вложенными массивами
+
+### [RegExpFactory](https://github.com/alexpts/php-tools/blob/master/docs/regExpFactory.md)
+Сервис для карирования регулярных выражений
