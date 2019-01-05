@@ -62,7 +62,7 @@ class Collection implements CollectionInterface
         return $this;
     }
 
-    public function has(string $name) : bool
+    public function has(string $name): bool
     {
         foreach ($this->items as $items) {
             if (isset($items[$name])) {
