@@ -11,6 +11,8 @@
 
 ```$ composer require alexpts/php-tools```
 
+### [ArrayHelper](https://github.com/alexpts/php-tools/blob/master/docs/arrayHelper.md)
+Вспомогательные методы для работы с массивами
 
 ### [Collection](https://github.com/alexpts/php-tools/blob/master/docs/collection.md)
 Коллекция с приоритетом
