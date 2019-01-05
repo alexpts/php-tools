@@ -12,12 +12,12 @@ class ArrayHelper
         foreach ($collection as $index => $element) {
             foreach ($callbacks as $partition => $callback) {
                 if ($callback($element, $index, $collection)) {
-                    $partitions[$partition][] = $element;
+                    $partitions[$partition][$index] = $element;
                     continue 2;
                 }
             }
             $partition++;
-            $partitions[$partition][] = $element;
+            $partitions[$partition][$index] = $element;
         }
 
         return $partitions;

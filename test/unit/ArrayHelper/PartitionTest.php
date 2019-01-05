@@ -14,8 +14,8 @@ class PartitionTest extends TestCase
            return (bool)$element === true;
         });
 
-        static::assertSame(['1', 'false', true, 34], $trueCollection);
-        static::assertSame([0, '0', false, null], $falseCollection);
+        static::assertSame(['1', 'false', true, 34], array_values($trueCollection));
+        static::assertSame([0, '0', false, null], array_values($falseCollection));
     }
 
     public function testSplitByCallbacks(): void
@@ -31,8 +31,20 @@ class PartitionTest extends TestCase
             }
         );
 
-        static::assertSame(['1', '0', 'false'], $strings);
-        static::assertSame([true, false], $bool);
-        static::assertSame([0, null, 34], $other);
+        static::assertSame(['1', '0', 'false'], array_values($strings));
+        static::assertSame([true, false], array_values($bool));
+        static::assertSame([0, null, 34], array_values($other));
+    }
+
+    public function testSaveIndex(): void
+    {
+        $data = ['n1' => 0, 'n2' => 100, 'n3' => 50];
+        $helper = new ArrayHelper;
+        [$less100, $other] = $helper->partition($data, function ($element, $index, array $collection) {
+            return $element < 100;
+        });
+
+        static::assertSame(['n1' => 0, 'n3' => 50], $less100);
+        static::assertSame(['n2' => 100], $other);
     }
 }
