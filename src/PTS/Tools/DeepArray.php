@@ -30,7 +30,7 @@ class DeepArray
      *
      * @return mixed
      */
-    public function getAttr(array $name, array &$context, $defaultValue = false)
+    public function getAttr(array $name, array &$context, $defaultValue = null)
     {
         $current = array_shift($name);
 

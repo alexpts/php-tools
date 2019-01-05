@@ -16,7 +16,7 @@ class RegExpFactoryTest extends TestCase
 
     public function testCreateRegExp(): void
     {
-        $regExp = $this->factory->create('~[^\d\+]~');
-        static::assertEquals('71232131231', $regExp('+7(123) 213-1231'));
+        $regExp = $this->factory->create('~[^\d+]~');
+        static::assertSame('+71232131231', $regExp('+7(123) 213-1231'));
     }
 }

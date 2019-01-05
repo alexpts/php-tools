@@ -33,7 +33,7 @@ class DeepArrayTest extends TestCase
     public function testGet(array $data, array $keys, $expected): void
     {
         $value = $this->service->getAttr($keys, $data);
-        self::assertEquals($expected, $value);
+        self::assertSame($expected, $value);
     }
 
     public function getDataProvider(): array
@@ -59,7 +59,7 @@ class DeepArrayTest extends TestCase
     public function testSet(array $data, array $keys, $value, array $expected)
     {
         $this->service->setAttr($keys, $data, $value);
-        self::assertEquals($expected, $data);
+        self::assertSame($expected, $data);
     }
 
     public function setDataProvider()
@@ -77,7 +77,7 @@ class DeepArrayTest extends TestCase
         $data = (clone $this)->dataSample;
         $this->service->setTrim(true);
         $this->service->setAttr(['user', 'age'], $data, null);
-        self::assertEquals([
+        self::assertSame([
             'user' => [
                 'name' => 'Alex',
                 'friends' => ['Bob', 'Rain']

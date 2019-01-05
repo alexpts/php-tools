@@ -24,7 +24,7 @@ class CollectionTest extends TestCase
             ]
         ];
 
-        self::assertEquals($expected, $items);
+        self::assertSame($expected, $items);
     }
 
     public function testDuplicateItem()
@@ -45,7 +45,7 @@ class CollectionTest extends TestCase
             ]
         ];
 
-        self::assertEquals($expected, $items);
+        self::assertSame($expected, $items);
     }
 
     public function testRemoveItemWithoutPriority()
@@ -83,7 +83,7 @@ class CollectionTest extends TestCase
         $items = $this->coll->getFlatItems(true);
         $expected = ['bootstrap' => 'bootstrap.js', 'jquery' => 'jquery.js'];
 
-        self::assertEquals($expected, $items);
+        self::assertSame($expected, $items);
     }
 
     public function testGetSortedItem()
@@ -101,7 +101,7 @@ class CollectionTest extends TestCase
             ]
         ];
 
-        self::assertEquals($expected, $items);
+        self::assertSame($expected, $items);
     }
 
 }
