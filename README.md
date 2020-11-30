@@ -24,3 +24,6 @@
 
 ### [RegExpFactory](https://github.com/alexpts/php-tools/blob/master/docs/regExpFactory.md)
 Сервис для карирования регулярных выражений
+
+### [TraceFormatter](https://github.com/alexpts/php-tools/blob/master/docs/traceFormatter.md)
+Сервис для форматирования трейса в компактный вид для логов
