@@ -1,19 +1,21 @@
 <?php
+declare(strict_types=1);
+
 namespace PTS\Tools;
 
 use PHPUnit\Framework\TestCase;
 
 class CollectionTest extends TestCase
 {
-    /** @var Collection */
-    protected $coll;
+    protected Collection $coll;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
         $this->coll = new Collection;
     }
 
-    public function testAddItem()
+    public function testAddItem(): void
     {
         $this->coll->addItem('jquery', 'jquery.js');
         $items = $this->coll->getItems();
@@ -27,14 +29,14 @@ class CollectionTest extends TestCase
         self::assertSame($expected, $items);
     }
 
-    public function testDuplicateItem()
+    public function testDuplicateItem(): void
     {
         $this->expectException(DuplicateKeyException::class);
         $this->coll->addItem('jquery', 'jquery.js');
         $this->coll->addItem('jquery', 'some.css');
     }
 
-    public function testAddItemWithPriority()
+    public function testAddItemWithPriority(): void
     {
         $this->coll->addItem('jquery', 'jquery.js', 21);
         $items = $this->coll->getItems();
@@ -48,7 +50,7 @@ class CollectionTest extends TestCase
         self::assertSame($expected, $items);
     }
 
-    public function testRemoveItemWithoutPriority()
+    public function testRemoveItemWithoutPriority(): void
     {
         $this->coll->addItem('jquery', 'jquery.js');
         $this->coll->removeItem('jquery');
@@ -57,7 +59,7 @@ class CollectionTest extends TestCase
         self::assertCount(0, $items[50]);
     }
 
-    public function testRemoveItemWithPriority()
+    public function testRemoveItemWithPriority(): void
     {
         $this->coll->addItem('jquery', 'jquery.js');
         $this->coll->removeItem('jquery', 50);
@@ -66,7 +68,7 @@ class CollectionTest extends TestCase
         self::assertCount(0, $items[50]);
     }
 
-    public function testFlush()
+    public function testFlush(): void
     {
         $this->coll->addItem('jquery', 'jquery.js');
         $this->coll->flush();
@@ -75,7 +77,7 @@ class CollectionTest extends TestCase
         self::assertCount(0, $items);
     }
 
-    public function testGetFlatSortedItems()
+    public function testGetFlatSortedItems(): void
     {
         $this->coll->addItem('jquery', 'jquery.js', 20);
         $this->coll->addItem('bootstrap', 'bootstrap.js', 60);
@@ -86,7 +88,7 @@ class CollectionTest extends TestCase
         self::assertSame($expected, $items);
     }
 
-    public function testGetSortedItem()
+    public function testGetSortedItem(): void
     {
         $this->coll->addItem('jquery', 'jquery.js', 20);
         $this->coll->addItem('bootstrap', 'bootstrap.js', 60);

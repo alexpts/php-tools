@@ -1,5 +1,8 @@
 <?php
 declare(strict_types = 1);
+
 namespace PTS\Tools;
 
-class DuplicateKeyException extends \Exception {}
+use Exception;
+
+class DuplicateKeyException extends Exception {}

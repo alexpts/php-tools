@@ -8,10 +8,8 @@ use DateTimeZone;
 
 class MicroDate
 {
-    /** @var int */
-    public $sec;
-    /** @var int */
-    public $uSec;
+    public int $sec;
+    public int $uSec;
 
     /**
      * @param int $sec
@@ -24,7 +22,7 @@ class MicroDate
     }
 
     /**
-     * @param \DateTime $date
+     * @param DateTime $date
      *
      * @return MicroDate
      */
@@ -50,7 +48,7 @@ class MicroDate
      */
     public function toDateTime(DateTimeZone $timeZone = null): DateTime
     {
-        $date = \DateTime::createFromFormat('U.u', $this->sec . '.' . $this->uSec);
+        $date = DateTime::createFromFormat('U.u', $this->sec . '.' . $this->uSec);
         if ($timeZone) {
             $date->setTimezone($timeZone);
         }

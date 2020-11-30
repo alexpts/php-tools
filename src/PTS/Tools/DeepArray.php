@@ -5,14 +5,10 @@ namespace PTS\Tools;
 
 class DeepArray
 {
-    /** @var bool */
-    protected $trim = false;
 
-    /**
-     * @param bool $trim
-     * @return $this
-     */
-    public function setTrim(bool $trim = false): self
+    protected bool $trim = false;
+
+    public function setTrim(bool $trim = false): static
     {
         $this->trim = $trim;
         return $this;
@@ -23,14 +19,7 @@ class DeepArray
         return $this->trim;
     }
 
-    /**
-     * @param array $name
-     * @param array $context
-     * @param mixed $defaultValue
-     *
-     * @return mixed
-     */
-    public function getAttr(array $name, array &$context, $defaultValue = null)
+    public function getAttr(array $name, array &$context, mixed $defaultValue = null): mixed
     {
         $current = array_shift($name);
 
@@ -43,14 +32,7 @@ class DeepArray
             : $context[$current];
     }
 
-    /**
-     * @param array $name
-     * @param array $context
-     * @param mixed $value
-     *
-     * @return $this
-     */
-    public function setAttr(array $name, array &$context, $value): self
+    public function setAttr(array $name, array &$context, mixed $value): static
     {
         $current = array_shift($name);
 
@@ -68,7 +50,7 @@ class DeepArray
         return $this;
     }
 
-    protected function setValueToContext(string $name, array &$context, $value): void
+    protected function setValueToContext(string $name, array &$context, mixed $value): void
     {
         $context[$name] = $value;
 

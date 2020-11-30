@@ -5,19 +5,9 @@ namespace PTS\Tools;
 
 class Collection implements CollectionInterface
 {
-    /** @var array */
-    protected $items = [];
+    protected array $items = [];
 
-    /**
-     * @param string $name
-     * @param mixed $item
-     * @param int $priority
-     *
-     * @return $this
-     *
-     * @throws DuplicateKeyException
-     */
-    public function addItem(string $name, $item, int $priority = 50): self
+    public function addItem(string $name, mixed $item, int $priority = 50): static
     {
         if ($this->has($name)) {
             throw new DuplicateKeyException('Item with name '.$name.' already defined');
@@ -27,34 +17,23 @@ class Collection implements CollectionInterface
         return $this;
     }
 
-    /**
-     * @param string $name
-     * @param null|int $priority
-     *
-     * @return $this
-     */
-    public function removeItem(string $name, int $priority = null): self
+    public function removeItem(string $name, int $priority = null): static
     {
-        if ($priority !== null) {
-            if (isset($this->items[$priority][$name])) {
-                unset($this->items[$priority][$name]);
-            }
-
-            return $this;
+        if ($priority === null) {
+            return $this->removeItemWithoutPriority($name);
         }
 
-        return $this->removeItemWithoutPriority($name);
+        if ($this->items[$priority][$name] ?? false) {
+            unset($this->items[$priority][$name]);
+        }
+
+        return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    protected function removeItemWithoutPriority(string $name): self
+    protected function removeItemWithoutPriority(string $name): static
     {
         foreach ($this->items as $priority => $items) {
-            if (isset($items[$name])) {
+            if ($items[$name] ?? false) {
                 unset($this->items[$priority][$name]);
             }
         }
@@ -65,7 +44,7 @@ class Collection implements CollectionInterface
     public function has(string $name): bool
     {
         foreach ($this->items as $items) {
-            if (isset($items[$name])) {
+            if ($items[$name] ?? false) {
                 return true;
             }
         }
@@ -92,7 +71,6 @@ class Collection implements CollectionInterface
     {
         $flatItems = [];
 
-        /** @var array $items */
         foreach ($this->getItems($sort) as $items) {
             foreach ($items as $name => $item) {
                 $flatItems[$name] = $item;
@@ -105,7 +83,7 @@ class Collection implements CollectionInterface
     /**
      * @return $this
      */
-    public function flush(): self
+    public function flush(): static
     {
         $this->items = [];
         return $this;

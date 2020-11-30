@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use PTS\Tools\ArrayHelper;
@@ -40,7 +41,7 @@ class PartitionTest extends TestCase
     {
         $data = ['n1' => 0, 'n2' => 100, 'n3' => 50];
         $helper = new ArrayHelper;
-        [$less100, $other] = $helper->partition($data, function ($element, $index, array $collection) {
+        [$less100, $other] = $helper->partition($data, function ($element, $index, array $collection): bool {
             return $element < 100;
         });
 

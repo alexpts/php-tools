@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace PTS\Tools;
 
@@ -6,8 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class RegExpFactoryTest extends TestCase
 {
-    /** @var RegExpFactory */
-    protected $factory;
+
+    protected RegExpFactory $factory;
 
     protected function setUp(): void
     {

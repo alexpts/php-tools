@@ -1,23 +1,14 @@
 <?php
 declare(strict_types = 1);
+
 namespace PTS\Tools;
 
 interface CollectionInterface
 {
-    /**
-     * @param string $name
-     * @param mixed $item
-     * @param int $priority
-     * @return $this
-     */
-    public function addItem(string $name, $item, int $priority = 50);
 
-    /**
-     * @param string $name
-     * @param int|null $priority
-     * @return $this
-     */
-    public function removeItem(string $name, int $priority = null);
+    public function addItem(string $name, mixed $item, int $priority = 50): static;
+
+    public function removeItem(string $name, int $priority = null): static;
 
     public function has(string $name) : bool;
 
@@ -25,8 +16,5 @@ interface CollectionInterface
 
     public function getFlatItems(bool $sort = true) : array;
 
-    /**
-     * @return $this
-     */
-    public function flush();
+    public function flush(): static;
 }

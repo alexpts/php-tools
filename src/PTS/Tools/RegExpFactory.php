@@ -7,8 +7,6 @@ class RegExpFactory
 {
     public function create(string $pattern, string $replacement = ''): callable
     {
-        return function ($value) use ($pattern, $replacement): string {
-            return preg_replace($pattern, $replacement, $value);
-        };
+        return static fn ($value): string => preg_replace($pattern, $replacement, $value);
     }
 }

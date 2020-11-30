@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace PTS\Tools;
 
@@ -6,11 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 class DeepArrayTest extends TestCase
 {
-    /** @var DeepArray */
-    protected $service;
+    protected DeepArray $service;
 
-    /** @var array */
-    protected $dataSample = [
+    protected array $dataSample = [
         'user' => [
             'age' => 12,
             'name' => 'Alex',
@@ -20,6 +19,7 @@ class DeepArrayTest extends TestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
         $this->service = new DeepArray;
     }
 
@@ -30,7 +30,7 @@ class DeepArrayTest extends TestCase
      *
      * @dataProvider getDataProvider
      */
-    public function testGet(array $data, array $keys, $expected): void
+    public function testGet(array $data, array $keys, mixed $expected): void
     {
         $value = $this->service->getAttr($keys, $data);
         self::assertSame($expected, $value);
@@ -56,13 +56,13 @@ class DeepArrayTest extends TestCase
      *
      * @dataProvider setDataProvider
      */
-    public function testSet(array $data, array $keys, $value, array $expected)
+    public function testSet(array $data, array $keys, mixed $value, array $expected): void
     {
         $this->service->setAttr($keys, $data, $value);
         self::assertSame($expected, $data);
     }
 
-    public function setDataProvider()
+    public function setDataProvider(): array
     {
         return [
             [[], ['user'], $this->dataSample['user'], ['user' => $this->dataSample['user']]],
@@ -72,7 +72,7 @@ class DeepArrayTest extends TestCase
         ];
     }
 
-    public function testSetWithTrim()
+    public function testSetWithTrim(): void
     {
         $data = (clone $this)->dataSample;
         $this->service->setTrim(true);
@@ -85,7 +85,7 @@ class DeepArrayTest extends TestCase
         ], $data);
     }
 
-    public function testGetTrim()
+    public function testGetTrim(): void
     {
         self::assertFalse($this->service->getTrim());
         self::assertTrue($this->service->setTrim(true)->getTrim());
