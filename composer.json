@@ -16,8 +16,8 @@
         "phpunit/phpunit": "~9.4"
     },
     "autoload": {
-        "psr-0": {
-            "PTS\\Tools": "src"
+        "psr-4": {
+            "PTS\\Tools\\": "src"
         }
     }
 }
